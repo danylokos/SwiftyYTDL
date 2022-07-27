@@ -76,11 +76,18 @@ public class YTDL {
     
     func setupYTDL() throws {
         guard
-            let modulePath = module.path(forResource: ytdlPythonExecScript, ofType: nil)
-        else {
-            throw "Failed to locate 'yt-dlp'"
-        }
+            let moduleBundle = module.path(forResource: "yt-dlp.zip", ofType: nil)
+        else { fatalError("yt-dlp not found.") }
         
+        let documentsDir = documentsDirectory.path
+        let modulePath = documentsDir + "/yt-dlp"
+        if !FileManager.default.fileExists(atPath: modulePath) {
+            SSZipArchive.unzipFile(
+                atPath: moduleBundle,
+                toDestination: documentsDir
+            )
+        }
+
         // Add module to `sys.path`
         guard
             let sys = try? Python.attemptImport("sys")

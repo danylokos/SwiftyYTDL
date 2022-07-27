@@ -10,7 +10,7 @@
 		772332CC288FA77900CC3954 /* PhotosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772332CB288FA77900CC3954 /* PhotosManager.swift */; };
 		7768684B2891080B0053CF2E /* ZipArchive in Frameworks */ = {isa = PBXBuildFile; productRef = 7768684A2891080B0053CF2E /* ZipArchive */; };
 		7768685328910C290053CF2E /* python.zip in Resources */ = {isa = PBXBuildFile; fileRef = 7768685228910C290053CF2E /* python.zip */; };
-		7768685528910DFE0053CF2E /* yt-dlp in Resources */ = {isa = PBXBuildFile; fileRef = 7768685428910DFE0053CF2E /* yt-dlp */; };
+		7779A14B28911735000AD646 /* yt-dlp.zip in Resources */ = {isa = PBXBuildFile; fileRef = 7779A14A28911735000AD646 /* yt-dlp.zip */; };
 		778E8C17288E6E3900839742 /* libFFI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778E8C12288E6E3900839742 /* libFFI.xcframework */; };
 		778E8C18288E6E3900839742 /* libFFI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 778E8C12288E6E3900839742 /* libFFI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		778E8C19288E6E3900839742 /* BZip2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778E8C13288E6E3900839742 /* BZip2.xcframework */; };
@@ -97,7 +97,7 @@
 		770D21F8288E3EC000B3142A /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		772332CB288FA77900CC3954 /* PhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosManager.swift; sourceTree = "<group>"; };
 		7768685228910C290053CF2E /* python.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = python.zip; path = "Thirdparties/Python-iOS-support/Python/Resources/python.zip"; sourceTree = SOURCE_ROOT; };
-		7768685428910DFE0053CF2E /* yt-dlp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "yt-dlp"; path = "Thirdparties/yt-dlp"; sourceTree = SOURCE_ROOT; };
+		7779A14A28911735000AD646 /* yt-dlp.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = "yt-dlp.zip"; path = "Thirdparties/yt-dlp.zip"; sourceTree = SOURCE_ROOT; };
 		778E8C12288E6E3900839742 /* libFFI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libFFI.xcframework; path = "Thirdparties/Python-iOS-support/libFFI.xcframework"; sourceTree = "<group>"; };
 		778E8C13288E6E3900839742 /* BZip2.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BZip2.xcframework; path = "Thirdparties/Python-iOS-support/BZip2.xcframework"; sourceTree = "<group>"; };
 		778E8C14288E6E3900839742 /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Python.xcframework; path = "Thirdparties/Python-iOS-support/Python.xcframework"; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				7768685228910C290053CF2E /* python.zip */,
-				7768685428910DFE0053CF2E /* yt-dlp */,
+				7779A14A28911735000AD646 /* yt-dlp.zip */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -389,8 +389,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7768685528910DFE0053CF2E /* yt-dlp in Resources */,
 				7768685328910C290053CF2E /* python.zip in Resources */,
+				7779A14B28911735000AD646 /* yt-dlp.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

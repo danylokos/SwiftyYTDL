@@ -29,3 +29,7 @@ zip -r python.zip lib/
 echo "[*] downloading yt-dlp..."
 curl -L -o "$DEPS_DIR/yt-dlp" --create-dirs \
 	https://github.com/yt-dlp/yt-dlp/releases/download/2022.07.18/yt-dlp
+
+echo "[*] compressing yt-dlp..."
+cd $DEPS_DIR/
+zip -r yt-dlp.zip yt-dlp
