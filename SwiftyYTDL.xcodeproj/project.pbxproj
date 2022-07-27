@@ -85,6 +85,7 @@
 
 /* Begin PBXFileReference section */
 		770D21F8288E3EC000B3142A /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		7719953A2891AC40002D2CE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		772332CB288FA77900CC3954 /* PhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosManager.swift; sourceTree = "<group>"; };
 		7768685228910C290053CF2E /* python.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = python.zip; path = "Thirdparties/Python-iOS-support/Python/Resources/python.zip"; sourceTree = SOURCE_ROOT; };
 		7779A14A28911735000AD646 /* yt-dlp.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = "yt-dlp.zip"; path = "Thirdparties/yt-dlp.zip"; sourceTree = SOURCE_ROOT; };
@@ -155,6 +156,14 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		7719953B2891AC7D002D2CE7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7719953A2891AC40002D2CE7 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		7768685128910C160053CF2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +202,7 @@
 				77F776BC288C6D8C0034E181 /* ContentViewModel.swift */,
 				77F776BE288C6DC80034E181 /* LoadingView.swift */,
 				772332CB288FA77900CC3954 /* PhotosManager.swift */,
+				7719953B2891AC7D002D2CE7 /* Resources */,
 				77F76C05288871150034E181 /* Assets.xcassets */,
 				77F76C07288871150034E181 /* Preview Content */,
 			);
@@ -577,6 +587,7 @@
 				DEVELOPMENT_TEAM = DBR2MMCRF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftyYTDL/Resources/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save videos";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Save videos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -609,6 +620,7 @@
 				DEVELOPMENT_TEAM = DBR2MMCRF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftyYTDL/Resources/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save videos";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Save videos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

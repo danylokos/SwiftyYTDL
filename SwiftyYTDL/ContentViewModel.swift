@@ -34,7 +34,7 @@ class ContentViewModel: ObservableObject {
     }
     
     var footerText: String {
-        "yt-dpl: \(YTDL.shared.version ?? "N\\A")"
+        "yt-dlp: \(YTDL.shared.version ?? "N\\A")"
     }
     
     func extractInfo(from url: URL, completion: @escaping (Result<Bool, Error>) -> Void) {

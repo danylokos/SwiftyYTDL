@@ -20,9 +20,11 @@ echo "[*] extracting $PYTHON_SUPPORT..."
 tar xzf $DEPS_DIR/$PYTHON_SUPPORT.tar.gz \
 	-C $DEPS_DIR/$PYTHON_SUPPORT/
 
+rm "$DEPS_DIR/$PYTHON_SUPPORT.tar.gz"
+
 echo "[*] compressing Python..."
 cd $DEPS_DIR/$PYTHON_SUPPORT/Python/Resources/
-zip -r python.zip lib/
+zip -r -q python.zip lib/
 
 # https://github.com/yt-dlp/yt-dlp
 
@@ -32,4 +34,6 @@ curl -L -o "$DEPS_DIR/yt-dlp" --create-dirs \
 
 echo "[*] compressing yt-dlp..."
 cd $DEPS_DIR/
-zip -r yt-dlp.zip yt-dlp
+zip -r -q yt-dlp.zip yt-dlp
+
+rm "$DEPS_DIR/yt-dlp"
