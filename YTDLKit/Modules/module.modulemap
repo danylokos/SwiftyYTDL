@@ -1,0 +1,13 @@
+framework module YTDLKit {
+    umbrella header "YTDLKit.h"
+
+    export *
+
+    module * { export * }
+    
+    explicit module Private {
+        header "YTDLKit_Private.h"
+
+        export *
+    }
+}
