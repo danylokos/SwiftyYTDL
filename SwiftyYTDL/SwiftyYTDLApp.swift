@@ -11,7 +11,9 @@ import SwiftUI
 struct SwiftyYTDLApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: ContentViewModel())
+            NavigationView {
+                ContentView(viewModel: ContentViewModel())
+            }.navigationViewStyle(.stack)
         }
     }
 }

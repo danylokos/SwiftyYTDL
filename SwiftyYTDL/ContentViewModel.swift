@@ -33,8 +33,17 @@ class ContentViewModel: ObservableObject {
         Formatter.shared.byteFormatter.string(fromByteCount: bytes)
     }
     
+    var versionInfo: String {
+        guard
+            let infoDict = Bundle.main.infoDictionary,
+            let version = infoDict["CFBundleShortVersionString"] as? String,
+            let build = infoDict["CFBundleVersion"] as? String
+        else { return "N\\A" }
+        return "\(version).\(build)"
+    }
+    
     var footerText: String {
-        "yt-dlp: \(YTDL.shared.version ?? "N\\A")"
+        "\(versionInfo), yt-dlp: \(YTDL.shared.version ?? "N\\A")"
     }
     
     func extractInfo(from url: URL, completion: @escaping (Result<Bool, Error>) -> Void) {

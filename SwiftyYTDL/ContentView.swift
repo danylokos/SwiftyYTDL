@@ -18,26 +18,29 @@ struct ContentView: View {
     @State var pastedLink: String?
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                List {
-                    pasteboardSection()
-                    downloadsSection()
-                #if DEBUG
-                    debugResourcesSection()
-                #endif
-                }.listStyle(InsetGroupedListStyle())
-                if isLoading {
-                    LoadingView()
-                        .offset(y: -50.0)
-                }
+        ZStack {
+            VStack {
+            List {
+                pasteboardSection()
+                downloadsSection()
+            #if DEBUG
+                debugResourcesSection()
+            #endif
+            }.listStyle(InsetGroupedListStyle())
+                Text(viewModel.footerText)
+                    .foregroundColor(.secondary)
+                    .font(.callout)
+            }.background(Color(uiColor: .systemGroupedBackground))
+            if isLoading {
+                LoadingView()
+                    .offset(y: -50.0)
             }
-            .navigationTitle("SwiftyYTDL")
-            .actionSheet(isPresented: $isActionSheetVisible) {
-                downloadsActionSheet()
-            }
-            .errorAlert(error: $error)
         }
+        .navigationTitle("SwiftyYTDL")
+        .actionSheet(isPresented: $isActionSheetVisible) {
+            downloadsActionSheet()
+        }
+        .errorAlert(error: $error)
     }
     
     func pasteboardSection() -> some View {
@@ -47,8 +50,6 @@ struct ContentView: View {
             }) {
                 Text("Paste URL")
             }
-        } footer: {
-            Text(viewModel.footerText)
         }.alert("Download", isPresented: .constant($pastedLink.wrappedValue != nil)) {
             Button(action: {
                 $pastedLink.wrappedValue = nil
