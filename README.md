@@ -21,3 +21,18 @@ After that just use Xcode to open `SwiftyYTDL.xcodeproj` and run the project.
 ```sh
 open SwiftyYTDL.xcodeproj
 ```
+
+## yt-dlp
+
+Check version:
+
+```sh
+cd Thirdparties && python3
+```
+
+```sh
+>>> import sys
+>>> sys.path.append('yt-dlp')
+>>> import yt_dlp
+>>> yt_dlp.version.__version__
+```

@@ -6,6 +6,8 @@ set -o pipefail
 ROOT_DIR=$(pwd)
 DEPS_DIR="$ROOT_DIR/Thirdparties"
 
+YT_DLP_VER=2023.07.06
+
 rm -rf $DEPS_DIR/
 
 # https://github.com/beeware/Python-Apple-support
@@ -28,9 +30,9 @@ zip -r -q python.zip lib/
 
 # https://github.com/yt-dlp/yt-dlp
 
-echo "[*] downloading yt-dlp..."
+echo "[*] downloading yt-dlp-$YT_DLP_VER..."
 curl -L -o "$DEPS_DIR/yt-dlp" --create-dirs \
-	https://github.com/yt-dlp/yt-dlp/releases/download/2023.03.04/yt-dlp
+	https://github.com/yt-dlp/yt-dlp/releases/download/$YT_DLP_VER/yt-dlp
 
 echo "[*] compressing yt-dlp..."
 cd $DEPS_DIR/
