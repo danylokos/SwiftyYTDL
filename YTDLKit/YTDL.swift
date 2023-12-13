@@ -42,7 +42,20 @@ public class YTDL {
             let pythonBundle = module.path(forResource: "python.zip", ofType: nil)
         else { fatalError("Python bundle not found.") }
         
-        let pythonHome = documentsDirectory.path + "/python"
+        let pythonHome = documentsDirectory
+            .appendingPathComponent("python", isDirectory: true).path
+        let verFilePath = URL(fileURLWithPath: pythonHome)
+            .appendingPathComponent(".version").path
+        
+        // Remove existing installation if newer version is available
+        if let infoPlistVer = module.infoDictionary?["PYTHON_VER"] as? String,
+           let currVer = try? String(contentsOfFile: verFilePath),
+           infoPlistVer == currVer {
+            print("Python version already installed: \(currVer)")
+        } else {
+            try? FileManager.default.removeItem(atPath: pythonHome)
+        }
+        
         if !FileManager.default.fileExists(atPath: pythonHome) {
             SSZipArchive.unzipFile(
                 atPath: pythonBundle,
@@ -60,9 +73,24 @@ public class YTDL {
         
         let sys = Python.import("sys")
 
-        print("Python \(sys.version_info.major).\(sys.version_info.minor)")
+        let pythonVer = [
+            sys.version_info.major,
+            sys.version_info.minor,
+            sys.version_info.micro
+        ]
+            .compactMap { "\($0)" }
+            .joined(separator: ".")
+        
+        print("Python \(pythonVer)")
         print("Python Version: \(sys.version)")
         print("Python Encoding: \(sys.getdefaultencoding().upper())")
+        
+        // Update ".version" file
+        try? pythonVer.write(
+            toFile: verFilePath,
+            atomically: true,
+            encoding: .utf8
+        )
     }
 
     enum YTDLDefaults {
@@ -79,12 +107,26 @@ public class YTDL {
             let moduleBundle = module.path(forResource: "yt-dlp.zip", ofType: nil)
         else { fatalError("yt-dlp not found.") }
         
-        let documentsDir = documentsDirectory.path
-        let modulePath = documentsDir + "/yt-dlp"
+        let moduleDestPath = documentsDirectory
+            .appendingPathComponent("yt-dlp", isDirectory: true).path
+        let modulePath = documentsDirectory
+            .appendingPathComponent("yt-dlp/yt-dlp").path
+        let verFilePath = URL(fileURLWithPath: moduleDestPath)
+            .appendingPathComponent(".version").path
+
+        // Remove existing installation if newer version is available
+        if let infoPlistVer = module.infoDictionary?["YT_DLP_VER"] as? String,
+           let currVer = try? String(contentsOfFile: verFilePath),
+           infoPlistVer == currVer {
+            print("yt-dlp version already installed: \(currVer)")
+        } else {
+            try? FileManager.default.removeItem(atPath: moduleDestPath)
+        }
+        
         if !FileManager.default.fileExists(atPath: modulePath) {
             SSZipArchive.unzipFile(
                 atPath: moduleBundle,
-                toDestination: documentsDir
+                toDestination: moduleDestPath
             )
         }
 
@@ -120,6 +162,12 @@ public class YTDL {
         print("yt-dlp: \(version)")
         self.version = version
         self.yt_dlp = module
+        
+        try? version.write(
+            toFile: verFilePath,
+            atomically: true,
+            encoding: .utf8
+        )
     }
     
     public func helloWorld() -> Int {

@@ -16,6 +16,7 @@
 		778E8C1B288E6E3900839742 /* Python.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778E8C14288E6E3900839742 /* Python.xcframework */; };
 		778E8C1D288E6E3900839742 /* OpenSSL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778E8C15288E6E3900839742 /* OpenSSL.xcframework */; };
 		778E8C1F288E6E3900839742 /* XZ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778E8C16288E6E3900839742 /* XZ.xcframework */; };
+		77923C822B2A3284009FCBB5 /* YTDL.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77923C812B2A3284009FCBB5 /* YTDL.plist */; };
 		77F76C02288871110034E181 /* SwiftyYTDLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F76C01288871110034E181 /* SwiftyYTDLApp.swift */; };
 		77F76C04288871110034E181 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F76C03288871110034E181 /* ContentView.swift */; };
 		77F76C06288871150034E181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77F76C05288871150034E181 /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		778E8C14288E6E3900839742 /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Python.xcframework; path = "Thirdparties/Python-iOS-support/Python.xcframework"; sourceTree = "<group>"; };
 		778E8C15288E6E3900839742 /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = "Thirdparties/Python-iOS-support/OpenSSL.xcframework"; sourceTree = "<group>"; };
 		778E8C16288E6E3900839742 /* XZ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = XZ.xcframework; path = "Thirdparties/Python-iOS-support/XZ.xcframework"; sourceTree = "<group>"; };
+		77923C812B2A3284009FCBB5 /* YTDL.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YTDL.plist; sourceTree = "<group>"; };
 		77F76BFE288871110034E181 /* SwiftyYTDL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyYTDL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77F76C01288871110034E181 /* SwiftyYTDLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyYTDLApp.swift; sourceTree = "<group>"; };
 		77F76C03288871110034E181 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		7768685128910C160053CF2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				77923C812B2A3284009FCBB5 /* YTDL.plist */,
 				7768685228910C290053CF2E /* python.zip */,
 				7779A14A28911735000AD646 /* yt-dlp.zip */,
 			);
@@ -391,6 +394,7 @@
 			files = (
 				7768685328910C290053CF2E /* python.zip in Resources */,
 				7779A14B28911735000AD646 /* yt-dlp.zip in Resources */,
+				77923C822B2A3284009FCBB5 /* YTDL.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +657,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YTDLKit/Resources/YTDL.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -687,6 +692,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YTDLKit/Resources/YTDL.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

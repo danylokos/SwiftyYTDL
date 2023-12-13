@@ -6,7 +6,10 @@ set -o pipefail
 ROOT_DIR=$(pwd)
 DEPS_DIR="$ROOT_DIR/Thirdparties"
 
+PYTHON_VER=3.9.12
 YT_DLP_VER=2023.11.16
+
+YTDL_PLIST="$ROOT_DIR/YTDLKit/Resources/YTDL.plist"
 
 rm -rf $DEPS_DIR/
 
@@ -28,6 +31,9 @@ echo "[*] compressing Python..."
 cd $DEPS_DIR/$PYTHON_SUPPORT/Python/Resources/
 zip -r -q python.zip lib/
 
+echo "[*] updating Python version to $PYTHON_VER inside YTDLKit's plist..."
+plutil -replace PYTHON_VER -string $PYTHON_VER "$YTDL_PLIST"
+
 # https://github.com/yt-dlp/yt-dlp
 
 echo "[*] downloading yt-dlp-$YT_DLP_VER..."
@@ -37,5 +43,8 @@ curl -L -o "$DEPS_DIR/yt-dlp" --create-dirs \
 echo "[*] compressing yt-dlp..."
 cd $DEPS_DIR/
 zip -r -q yt-dlp.zip yt-dlp
+
+echo "[*] updating yt-dlp version to $YT_DLP_VER inside YTDLKit's plist..."
+plutil -replace YT_DLP_VER -string $YT_DLP_VER "$YTDL_PLIST"
 
 rm "$DEPS_DIR/yt-dlp"
