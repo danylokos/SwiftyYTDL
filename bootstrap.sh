@@ -6,7 +6,7 @@ set -o pipefail
 ROOT_DIR=$(pwd)
 DEPS_DIR="$ROOT_DIR/Thirdparties"
 
-YT_DLP_VER=2023.07.06
+YT_DLP_VER=2023.11.16
 
 rm -rf $DEPS_DIR/
 
