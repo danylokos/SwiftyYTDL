@@ -45,7 +45,7 @@ jobs:
           PRIV_KEY_DIR="$HOME/private_keys"
           AUTH_KEY_FILE="$PRIV_KEY_DIR/AuthKey_$API_KEY_ID.p8"
 
-          echo "::set-output name=AUTH_KEY_PATH::$AUTH_KEY_FILE"
+          echo "AUTH_KEY_PATH=$AUTH_KEY_FILE" >> $GITHUB_OUTPUT
 
           mkdir -p "$PRIV_KEY_DIR"
           echo "$API_PRIVATE_KEY" > "$AUTH_KEY_FILE"

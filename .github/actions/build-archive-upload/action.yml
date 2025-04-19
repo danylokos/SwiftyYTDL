@@ -52,7 +52,7 @@ runs:
       shell: bash
       run: |
         export_plist=$RUNNER_TEMP/export.plist
-        echo "::set-output name=EXPORT_OPTIONS_PLIST::$export_plist"
+        echo "EXPORT_OPTIONS_PLIST=$export_plist" >> $GITHUB_OUTPUT
 
         cat > $export_plist << EOL
         <?xml version="1.0" encoding="UTF-8"?>
@@ -77,7 +77,7 @@ runs:
       run: |
         archive_file=build/$scheme.xcarchive
         export_dir=build/$scheme
-        echo "::set-output name=IPA_FILE::$export_dir/$scheme.ipa"
+        echo "IPA_FILE=$export_dir/$scheme.ipa" >> $GITHUB_OUTPUT
 
         xcodebuild \
           -exportArchive \
