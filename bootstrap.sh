@@ -6,8 +6,8 @@ set -o pipefail
 ROOT_DIR=$(pwd)
 DEPS_DIR="$ROOT_DIR/Thirdparties"
 
-PYTHON_VER=3.9.12
-YT_DLP_VER=2025.07.21
+PYTHON_VER=3.10-b3
+YT_DLP_VER=2026.02.04
 
 YTDL_PLIST="$ROOT_DIR/YTDLKit/Resources/YTDL.plist"
 
@@ -18,7 +18,7 @@ rm -rf $DEPS_DIR/
 PYTHON_SUPPORT="Python-iOS-support"
 echo "[*] downloading $PYTHON_SUPPORT..."
 curl -L -o "$DEPS_DIR/$PYTHON_SUPPORT.tar.gz" --create-dirs \
-	https://github.com/beeware/Python-Apple-support/releases/download/3.9-b7/Python-3.9-iOS-support.b7.tar.gz
+	https://github.com/beeware/Python-Apple-support/releases/download/${PYTHON_VER}/Python-${PYTHON_VER%-*}-iOS-support.${PYTHON_VER#*-}.tar.gz
 
 mkdir -p $DEPS_DIR/$PYTHON_SUPPORT/
 echo "[*] extracting $PYTHON_SUPPORT..."
