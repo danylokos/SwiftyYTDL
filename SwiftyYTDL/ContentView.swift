@@ -37,8 +37,33 @@ struct ContentView: View {
             }
         }
         .navigationTitle("SwiftyYTDL")
-        .actionSheet(isPresented: $isActionSheetVisible) {
-            downloadsActionSheet()
+        .confirmationDialog(
+            "Download",
+            isPresented: $isActionSheetVisible,
+            titleVisibility: .visible
+        ) {
+            ForEach(viewModel.items.enumerated().map({ $0 }), id: \.element.id) { idx, item in
+                Button(item.description) {
+                    isActionSheetVisible = false
+                    isLoading = true
+                    viewModel.download(
+                        item, from: item.browserUrl,
+                        playlistIdx: idx + 1,
+                        update: { _, _ in }
+                    ) { result in
+                        defer { isLoading = false }
+                        switch result {
+                        case .success:
+                            break
+                        case .failure(let err):
+                            error = err
+                        }
+                    }
+                }
+            }
+            Button("Cancel", role: .cancel) {
+                isActionSheetVisible = false
+            }
         }
         .errorAlert(error: $error)
     }
@@ -128,39 +153,6 @@ struct ContentView: View {
     }
 #endif
     
-    func downloadsActionSheet() -> ActionSheet {
-        ActionSheet(
-            title: Text("Download"),
-            message: Text("Pick a resource to download"),
-            buttons: viewModel.items.enumerated().map { idx, item in
-                .default(Text(item.description)) {
-                    defer {
-                        isActionSheetVisible = false
-                    }
-
-                    viewModel.download(
-                        item, from: item.browserUrl,
-                        playlistIdx: idx + 1,
-                        update: { _, _ in }
-                    ) { result in
-                        defer {
-                            isLoading = false
-                        }
-                        
-                        switch result {
-                        case .success:
-                            break
-                        case .failure(let err):
-                            error = err
-                        }
-                    }
-                }
-            } + [.cancel() {
-                isActionSheetVisible = false
-            }]
-        )
-    }
-    
 }
 
 extension View {
@@ -184,3 +176,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(viewModel: ContentViewModel())
     }
 }
+
